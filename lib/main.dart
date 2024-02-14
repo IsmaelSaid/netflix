@@ -50,18 +50,21 @@ class _HomeState extends State<Home> {
       for (var result in results) {
         var overview = result['overview'];
         var title = result['title'];
-        var poster_path = result['poster_path'];
+        var posterPath = result['poster_path'];
         var popularity = result['popularity'];
-        var release_date = result['release_date'];
-        var vote_average = result['vote_average'];
+        var releaseDate = result['release_date'];
+        var voteAverage = result['vote_average'];
+        var genres = result['genre_ids'];
+        // @see https://stackoverflow.com/questions/69071090/uncaught-in-promise-error-expected-a-value-of-type-listdynamic-but-got-o
+        var convertedGenres = List<int>.from(genres);
 
         film.add(Film(
-          title: title,
-          overview: overview,
-          date: DateTime.parse(release_date),
-          ratings: vote_average,
-          imageUrl: poster_path,
-        ));
+            title: title,
+            overview: overview,
+            date: DateTime.parse(releaseDate),
+            ratings: voteAverage,
+            imageUrl: posterPath,
+            genres: convertedGenres));
       }
 
       setState(() {

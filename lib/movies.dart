@@ -38,19 +38,59 @@ class _MoviesState extends State<Movies> {
                       child: Stack(
                         children: [
                           Image.network(e.getImageUrl()),
+                          Column(
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                color: Colors.black54,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    e.getTitle(),
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           Positioned(
                             left: 0,
-                            right: 0,
                             bottom: 0,
+                            right: 0,
                             child: Container(
+                              padding: EdgeInsets.all(10),
                               width: double.infinity,
-                              color: Colors.black54,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  '${e.getTitle()} ${e.getRatings()}',
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                              child: Wrap(
+                                children: [
+                                  ...(e.getGenres().whereType<String>().map(
+                                        (genre) => Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 1, vertical: 2),
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0xFF000000)
+                                                    .withOpacity(1),
+                                                offset: Offset(-3, 4),
+                                                blurRadius: 14,
+                                                spreadRadius: -4,
+                                              ),
+                                            ],
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(3),
+                                            child: Text(
+                                              genre,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 10,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )),
+                                ],
                               ),
                             ),
                           ),
