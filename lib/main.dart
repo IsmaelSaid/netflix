@@ -74,13 +74,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.search,
-            size: 40,
-          ),
-        ),
+        backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: Row(
@@ -109,6 +103,11 @@ class _HomeState extends State<Home> {
                 ],
                 shape:
                     MaterialStateProperty.all(const RoundedRectangleBorder()),
+                backgroundColor: MaterialStateProperty.all(Colors.black),
+                textStyle:
+                    MaterialStateProperty.all(TextStyle(color: Colors.white70)),
+                hintStyle:
+                    MaterialStateProperty.all(TextStyle(color: Colors.white70)),
                 onSubmitted: handleSearch,
               ),
             ),
