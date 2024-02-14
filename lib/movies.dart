@@ -35,10 +35,25 @@ class _MoviesState extends State<Movies> {
                       )
                     },
                     child: Card(
-                      child: Column(
+                      child: Stack(
                         children: [
                           Image.network(e.getImageUrl()),
-                          // Text(e.getTitle()),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            child: Container(
+                              width: double.infinity,
+                              color: Colors.black54,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  '${e.getTitle()} ${e.getRatings()}',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
                           // Text("photo"),
                           // Text(e.getDate().toString()),
                           // Text(e.getOverview()),
